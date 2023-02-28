@@ -1,5 +1,7 @@
 from flask import Blueprint, jsonify
+
 api = Blueprint('api', __name__, url_prefix='/api/v1')
+
 @api.route('/health')
 def health():
     return jsonify({"status": "ok"})
@@ -38,7 +40,7 @@ def create_todo():
      "deadline_at": "2023-02-27T00:00:00",
      "created_at": "2023-02-20T00:00:00",
      "updated_at": "2023-02-20T00:00:00"
-})
+}), 201
 
 @api.route('/todos/<int:id>', methods=['PUT'])
 def update_todo(id):
@@ -50,7 +52,7 @@ def update_todo(id):
      "deadline_at": "2023-02-27T00:00:00",
      "created_at": "2023-02-20T00:00:00",
      "updated_at": "2023-02-20T00:00:00"
-}), 201
+})
 
 @api.route('/todos/<int:id>', methods=['DELETE'])
 def delete_todo(id):
